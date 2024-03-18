@@ -2,7 +2,7 @@ import csv
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-import lidar_to_grid_map_dda as lg
+import wufinal as lg
 from math import cos, sin, radians, pi
 def ploting():
     def file_read(f):
