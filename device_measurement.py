@@ -52,7 +52,7 @@ TIMEOUT: int = 1
 
 output_filename = 'lid2.csv'
 def run():
-    print('running')
+    print('running...')
     count = 0
     raw = True
     lidar = RPLidar(port='COM3', baudrate=BAUDRATE, timeout=TIMEOUT)
