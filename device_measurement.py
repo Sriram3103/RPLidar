@@ -70,7 +70,7 @@ def run():
                     csv_writer.writerow([i[2], i[1]]) 
                     print(i[0],i[1],i[2])
                 count+=1
-                if count==8:
+                if count==3:
                     break
         lidar.stop()
         lidar.stop_motor()
