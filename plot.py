@@ -2,7 +2,7 @@ import csv
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-import wufinal as lg
+import lidar_to_grid_map_dda as lg
 from math import cos, sin, radians, pi
 def ploting():
     def file_read(f):
@@ -46,7 +46,10 @@ def ploting():
     ox = np.sin(ang) * dist
     oy = np.cos(ang) * dist
     pmap, minx, maxx, miny, maxy, xyreso = lg.generate_ray_casting_grid_map(ox, oy, xyreso, True)
+    center_x = pmap.shape[1] // 2  # Integer division for center index
+    center_y = pmap.shape[0] // 2
     xyres = np.array(pmap).shape
+   # plt.plot(center_x, center_y, marker='o', markersize=10, color='red', label='LiDAR Position')
     plt.figure(figsize=(20,8))
     plt.subplot(122)
     plt.imshow(pmap, cmap = "PiYG_r")
@@ -54,5 +57,6 @@ def ploting():
     plt.gca().set_xticks(np.arange(-.5, xyres[1], 1), minor = True)
     plt.gca().set_yticks(np.arange(-.5, xyres[0], 1), minor = True)
     plt.grid(True, which="minor", color="w", linewidth = .6, alpha = 0.5)
-    plt.colorbar()
+    plt.colorbar()   
+    plt.plot(center_x, center_y, marker='+', markersize=5, color='red', label='LiDAR Position')
     plt.show()

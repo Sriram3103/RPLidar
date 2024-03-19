@@ -41,11 +41,11 @@
 from datetime import datetime
 from os import path
 import csv
+import threading
 from rplidar import RPLidar
 from convert import convert_angles
 from plot import ploting
-
-
+import time
 
 BAUDRATE: int = 115200
 TIMEOUT: int = 1
@@ -70,7 +70,7 @@ def run():
                     csv_writer.writerow([i[2], i[1]]) 
                     print(i[0],i[1],i[2])
                 count+=1
-                if count==2:
+                if count==6:
                     break
         lidar.stop()
         lidar.stop_motor()
@@ -80,9 +80,16 @@ def run():
         lidar.stop_motor()
         lidar.disconnect()
 if __name__ == '__main__':
+    # thread1 = threading.Thread(target = run)
+    # thread1.start()
+    # thread2 = threading.Thread(target = convert_angles, args = ('lid2.csv','lid3.csv,') )
+    # time.sleep(3)
+    # thread3 = threading.Thread(target = ploting)
+    # thread2.start()
+    # thread3.start()
     run()
     convert_angles('lid2.csv', 'lid3.csv')
-    ploting()
+    ploting() 
 # for i in range(10):
 #     run()
-    
+

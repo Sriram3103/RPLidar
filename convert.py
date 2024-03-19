@@ -1,5 +1,5 @@
 import csv
-
+from plot import ploting
 def convert_angles(input_filename, output_filename):
   """
   Reads angle values (assumed to be in the first column) from a CSV file,
@@ -21,14 +21,14 @@ def convert_angles(input_filename, output_filename):
     for row in reader:
       # Assuming angles are in the first column
       angle = float(row[1])
-      new_angle = (angle / 360) * 6.4 # Scale and shift to 0-7 range
+      new_angle = (angle / 360) * 6.5 # Scale and shift to 0-7 range
 
       # Wrap around if the angle exceeds 7
-      new_angle = new_angle % 6.4
+      new_angle = new_angle % 6.5
 
       # Update the first column with the converted angle and write the row
       row[1] = new_angle
       writer.writerow(row)
-
+  # ploting()
 # Example usage (replace 'your_input.csv' and 'your_output.csv' with your actual filenames)
 #convert_angles('lid2.csv', 'lid3.csv')

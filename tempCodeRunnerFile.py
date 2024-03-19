@@ -1,2 +1,2 @@
-if __name__ == '__main__':
-    run()
+   run()
+    convert_angles('lid2.csv', 'lid3.csv')
